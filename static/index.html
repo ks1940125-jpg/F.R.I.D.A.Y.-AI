@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="F.R.I.D.A.Y. AI assistant HUD">
+    <title>F.R.I.D.A.Y. // STARK SYSTEMS</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main class="hud" data-state="idle">
+      <div class="grid" aria-hidden="true"></div>
+      <div class="corner corner-tl" aria-hidden="true"></div>
+      <div class="corner corner-tr" aria-hidden="true"></div>
+      <div class="corner corner-bl" aria-hidden="true"></div>
+      <div class="corner corner-br" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">F</span>
+          <span><strong>F.R.I.D.A.Y.</strong><small>STARK INDUSTRIES // PERSONAL AI</small></span>
+        </div>
+        <div class="connection"><i class="pulse-dot"></i><span id="connection-text">SYSTEM ONLINE</span></div>
+      </header>
+
+      <aside class="telemetry telemetry-left" aria-label="システム情報">
+        <p class="eyebrow">SYSTEM STATUS <span>01</span></p>
+        <div class="metric"><span>CPU LOAD</span><strong id="cpu-load">18%</strong></div>
+        <div class="meter"><i id="cpu-meter"></i></div>
+        <div class="metric"><span>MEMORY</span><strong>OPTIMAL</strong></div>
+        <div class="metric"><span>UPLINK</span><strong class="accent">SECURE</strong></div>
+        <div class="telemetry-rule"></div>
+        <p class="coordinates">LAT 37.3317° N<br>LONG 122.0307° W</p>
+      </aside>
+
+      <aside class="telemetry telemetry-right" aria-label="接続情報">
+        <p class="eyebrow">VOICE INTERFACE <span>02</span></p>
+        <div class="metric"><span>INPUT</span><strong id="voice-input-status">STANDBY</strong></div>
+        <div class="metric"><span>OUTPUT</span><strong id="voice-output-status">READY</strong></div>
+        <div class="metric"><span>PROTOCOL</span><strong>WEB SPEECH</strong></div>
+        <div class="telemetry-rule"></div>
+        <p class="voice-hint">MIC READY<br>AWAITING COMMAND</p>
+      </aside>
+
+      <section class="assistant" aria-label="F.R.I.D.A.Y. アシスタント">
+        <p class="eyebrow assistant-label">NEURAL CORE <span id="clock">--:--:--</span></p>
+        <div class="core-wrap" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="core"><span>F</span></div>
+          <div class="wave wave-one"></div>
+          <div class="wave wave-two"></div>
+        </div>
+        <h1>F.R.I.D.A.Y.</h1>
+        <p class="assistant-status" id="assistant-status">オンラインです、ボス。</p>
+      </section>
+
+      <section class="conversation" aria-label="会話">
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="message assistant-message">
+            <span class="message-tag">F.R.I.D.A.Y. // SYSTEM</span>
+            <p>お呼びでしょうか、ボス？準備は万端です。<span class="irish">Well then.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <form class="composer" id="chat-form">
+        <button class="icon-button mic-button" id="mic-button" type="button" aria-label="音声入力を開始" title="音声入力">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="2.5" width="6" height="12" rx="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M9 21.5h6"></path></svg>
+        </button>
+        <label class="sr-only" for="message-input">メッセージ</label>
+        <input id="message-input" name="message" autocomplete="off" maxlength="4000" placeholder="ボス、ご指示をどうぞ…" required>
+        <button class="voice-toggle" id="voice-toggle" type="button" aria-pressed="true" title="音声読み上げを切り替え">VOICE <span id="voice-toggle-state">ON</span></button>
+        <button class="send-button" id="send-button" type="submit" aria-label="送信">
+          <span>SEND</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"></path></svg>
+        </button>
+      </form>
+
+      <footer class="footer"><span>STARK SYSTEMS</span><span>ALL SYSTEMS NOMINAL <i class="pulse-dot"></i></span><span>V 1.0.4</span></footer>
+    </main>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
